@@ -12,7 +12,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 const FormValidationSchema  = yup.object({
-    Email: yup.string().required("enter valid email").min(5, "type more than 5 letters"),
+    email: yup.string().required("enter valid email").min(5, "type more than 5 letters"),
     password: yup.string().required("enter valid password").min(5),
 })
 
@@ -22,7 +22,7 @@ export default function Login({ setOpenModal }) {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const navigate = useNavigate();
     const {handleChange,handleBlur,handleSubmit,values,touched,errors}=useFormik({
-        initialValues:{Email:"",password:""},
+        initialValues:{email:"",password:""},
         validationSchema:FormValidationSchema,
         onSubmit:(values)=>{login(values)
         }
