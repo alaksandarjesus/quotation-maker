@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import Login from "./components/login";
+import Home from "./components/home";
 import Dashboard from "./components/dashboard";
 import './App.css';
 import AppBar from '@mui/material/AppBar';
@@ -27,6 +28,7 @@ function App() {
         <Toolbar  >
           {/* <Button color="inherit" onClick={() => { navigate('/') }}>Login</Button> */}
           <Button color="inherit" onClick={() => { navigate('/register') }}>person</Button>
+          <Button color="inherit" onClick={() => { navigate('/home') }}>Home</Button>
 
           <div className="log">
             <Button color="inherit" onClick={() => {
@@ -37,6 +39,7 @@ function App() {
       </AppBar>
 
       <Routes>
+        <Route  path="/home" element={ < Home />} />
         <Route path="/login" element={ <Login setOpenModal={setOpenModal} />} />
         <Route path="/register" element={<Dashboard />} />
       </Routes>
