@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import Login from "./components/login";
+import Modal from "./components/modal";
 import Home from "./components/home";
 import Dashboard from "./components/dashboard";
 import './App.css';
@@ -24,6 +24,7 @@ function App() {
   return (
 
     <div>
+      <nav class="navbar-expand-lg">
       <AppBar position="static">
         <Toolbar  >
           {/* <Button color="inherit" onClick={() => { navigate('/') }}>Login</Button> */}
@@ -37,10 +38,11 @@ function App() {
           </div>
         </Toolbar>
       </AppBar>
+      </nav>
 
       <Routes>
         <Route  path="/home" element={ < Home />} />
-        <Route path="/login" element={ <Login setOpenModal={setOpenModal} />} />
+        <Route path="/login" element={ <Modal setOpenModal={setOpenModal} />} />
         <Route path="/register" element={<Dashboard />} />
       </Routes>
       
