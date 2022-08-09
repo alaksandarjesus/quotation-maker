@@ -1,52 +1,34 @@
-import logo from './logo.svg';
-import Modal from "./components/modal";
 import Home from "./components/home";
+import Layout from "./components/Layout";
+import Login from "./components/login";
+import Register from "./components/Register";
 import Dashboard from "./components/dashboard";
+import Forgotpassword from "./components/Forgotpassword";
+import { ToastContainer } from 'react-toastify';
+import Resetpassword from "./components/Resetpassword";
 import './App.css';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
-  const navigate = useNavigate()
-  const [openModal,setOpenModal]=useState(false);
-  const [mode, setMode] = useState("light")
-  const theme = createTheme({
-    palette: {
-      mode: mode,
-    },
-  });
   return (
 
     <div>
-      <nav class="navbar-expand-lg">
-      <AppBar position="static">
-        <Toolbar  >
-          {/* <Button color="inherit" onClick={() => { navigate('/') }}>Login</Button> */}
-          <Button color="inherit" onClick={() => { navigate('/register') }}>person</Button>
-          <Button color="inherit" onClick={() => { navigate('/home') }}>Home</Button>
 
-          <div className="log">
-            <Button color="inherit" onClick={() => {
-          navigate("/login");
-        }}>login</Button>
-          </div>
-        </Toolbar>
-      </AppBar>
-      </nav>
 
       <Routes>
-        <Route  path="/home" element={ < Home />} />
-        <Route path="/login" element={ <Modal setOpenModal={setOpenModal} />} />
-        <Route path="/register" element={<Dashboard />} />
+        <Route path="/" element={<Layout />} >
+          <Route index element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgotpassword" element={<Forgotpassword />} />
+          <Route path="/resetpassword" element={<Resetpassword />} />
+        </Route>
+        <Route path="/home" element={< Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+       
       </Routes>
-      
 
+      <ToastContainer autoclose={5000} />
 
     </div>
 
